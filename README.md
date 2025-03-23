@@ -1,69 +1,119 @@
-# Desafio Backend BURH 
- 
-## Introdução 
-Nesse desafio serão analisadas suas competências no desenvolvimento de uma API de vagas de emprego. O desafio é referente à vaga Desenvolvedor(a) Backend PHP, publicada no [Burh](https://burh.com.br/vagas/3270129695). Abaixo você encontrará todas as informações necessárias para criar e submeter seu desafio.  
+# Projeto API de Vagas de Emprego com Laravel
 
-Boa sorte! 🙂 
- 
-## Instruções 
-Para realizar o desafio é importante que você cumpra os itens abaixo: 
-* Possuir um Github; 
-* Realizar o [Fork](https://docs.github.com/pt/get-started/quickstart/fork-a-repo) deste projeto e subir os commits em seu Github; 
-* Estar inscrito na [vaga](https://burh.com.br/vagas/3270129695). 
- 
-## Instruções 
-Para começar a desenvolver, o primeiro passo é criar um fork deste projeto, logo após, recomendamos que você de uma boa olhada nas principais funções e requisitos do desafio antes de começar a programar. Ao subir os commits do seu projeto busque ser o mais descritivo possível, sem subir muitas funcionalidades de uma vez. O desafio busca analisar suas competências em desenvolvimento de APIs, portanto não é necessário e nem será analisado nenhuma tela. Busque terminar primeiro os itens essenciais do desafio e só então, caso queira, você pode implementar funcionalidades adicionais ao seu projeto. 
- 
-A API deve ser criada utilizando PHP com o Framework Laravel. O banco ficará a sua escolha, portanto que seja um banco SQL (MySql, MariaDB, PostgreSQL, Sqlite, etc). 
- 
-## O Projeto 
-Você será responsável pela criação de uma API Restful de cadastro de vagas e candidatura de usuários, em que uma empresa pode criar uma vaga e um usuário pode se candidatar nas vagas criadas.  
-A API deve ser o mais simples possível, contendo somente as funcionalidades que você considere essenciais para a integração completa do seu projeto e atenda aos nossos requisitos.  
-Rotas, estrutura do banco e estrutura do código também estarão ao seu critério, portanto que supram os requisitos. 
-  
-A API deverá conter as seguintes entidades: 
+Introdução
 
- 
-* Empresa; 
-* Usuário; 
-* Vaga. 
- 
-A entidade empresa deverá conter os campos nome, descrição, CNPJ e plano. 
-A entidade vaga deverá conter os campos título, descrição, tipo de vaga, salário e horário. 
-A entidade usuário deverá conter os campos nome, e-mail, CPF e idade. 
- 
-Requisitos: 
+Este projeto consiste na criação de uma API RESTful para gerenciar vagas de emprego, candidaturas de usuários e informações
 
- 
-* Empresas podem abrir vagas. 
-* Usuários podem se candidatar a vagas. 
-* Não pode haver mais de um usuário com o mesmo e-mail ou CPF cadastrado. 
-* Não pode haver mais de uma empresa com o mesmo CNPJ cadastrado. 
-* As empresas poderão ter 2 tipos de plano: "Free" ou "Premium". Empresas com o plano Free poderão abrir até 5 vagas, enquanto empresas com o plano Premium podem abrir até 10 vagas. 
-* Poderão existir vagas do tipo PJ, CLT e estágio.  
-* Vagas do tipo CLT e estágio tem o cadastro do salário e horário obrigatórios.  
-* Vagas do tipo CLT devem possuir o salário mínimo de R$1212,00 enquanto vagas de estágio e PJ não possuem um valor mínimo.  
-* Vagas do tipo estágio devem ter o horário máximo de 6 horas. 
-* Deverá haver uma rota de busca de usuários, podendo filtrar por nome, E-mail e CPF. Além disso a rota deverá retornar todas as vagas em que aqueles usuários estão inscritos, trazendo todos os dados dessas vagas. 
- 
-Você é livre para nomear os campos da forma que preferir e adicionar quaisquer campos extras ou tabelas para criar relações entre as entidades. não é necessário qualquer sistema de autenticação. 
- 
-## O que avaliaremos em seu projeto 
-* Cumprimento dos requisitos do desafio. 
-* Estrutura e coerência do código. 
-* Arquitetura do banco. 
-* Código limpo e organizado. 
-* Padrões de código (PSRs, Design patterns, SOLID). 
-* Tratamento de erros. 
- 
-## O que será um diferencial para seu projeto. 
-* Uso de docker. 
-* Testes de integração. 
-* Design Patterns. 
-* Documentação (ReadME). 
+relacionadas. A API foi desenvolvida como parte de um desafio para a vaga de Desenvolvedor Backend PHP no Burh.
 
-* Uso de cache 
- 
-## O que NÃO é essencial em seu projeto 
-* Frontend. 
-* Autenticação. 
+Tecnologias Utilizadas
+
+* PHP: Linguagem de programação principal.
+
+* Laravel: Framework PHP utilizado para desenvolvimento da API.
+
+* MySQL: Banco de dados relacional para armazenamento de dados.
+
+* Docker: Utilizado para containerização do ambiente de desenvolvimento.
+
+Estrutura do Projeto
+
+## O projeto está estruturado da seguinte forma:
+
+* app/: Contém os controllers, models e outras classes relacionadas à lógica de negócios da aplicação. database/
+
+* migrations/: Migrations para criação e alteração de tabelas no banco de dados.
+
+* seeders/: Seeders para popular o banco de dados com dados de teste.
+
+* routes/: Define as rotas da API.
+
+* tests/: Testes automatizados para verificar o funcionamento da API.
+
+* Funcionalidades Implementadas
+
+# Cadastro de Empresas e Usuários:
+
+* Empresas podem se cadastrar com nome, descrição, CNPJ e plano (Free ou Premium).
+
+* Usuários podem se cadastrar com nome, email, CPF e idade.
+
+# Gerenciamento de Vagas de Emprego:
+
+* Empresas podem criar, listar, atualizar e excluir vagas de emprego.
+
+* Restrições são aplicadas ao número máximo de vagas conforme o plano da empresa (Free ou Premium).
+
+# Candidatura de Usuários às Vagas:
+
+* Usuários podem visualizar e se candidatar às vagas disponíveis.
+
+# Validações e Restrições:
+
+* Validações são aplicadas para garantir a unicidade de CPFs e emails de usuários.
+
+* Restrições são aplicadas para garantir a unicidade de CNPJs de empresas.
+
+# Requisitos Específicos:
+
+* Tipos específicos de vagas (PJ, CLT, Estágio) com regras diferentes para salário e horário.
+
+* Limites de vagas para empresas baseados no plano (Free até 5 vagas, Premium até 10 vagas).
+
+### Instalação e Execução Local
+
+# Para executar o projeto localmente, siga os passos abaixo:
+
+## Clone este repositório:
+
+***Copiar código **
+```bash
+git clone <url-do-seu-repositorio>
+```
+```bash
+cd nome-do-seu-projeto
+```
+
+# Configure o ambiente Docker:
+
+*** Copiar código **
+
+```bash
+docker-compose up -d
+
+```
+# Instale as dependências do projeto:
+
+*** Copiar código **
+
+```bash
+docker-compose exec app composer install
+```
+
+# Execute as migrações do banco de dados:
+
+*** Copiar código **
+
+```bash
+docker-compose exec app php artisan migrate
+```
+
+# Execute os seeders para popular o banco de dados:
+
+*** Copiar código **
+
+```bash
+docker-compose exec app php artisan db:seed
+```
+
+*** Acesse a API através de http://localhost:8080. **
+
+# Testes
+
+## Os testes automatizados estão localizados no diretório tests/. Eles podem ser executados usando o seguinte comando:
+
+*** Copiar código **
+
+```bash
+docker-compose exec app php artisan test
+```
