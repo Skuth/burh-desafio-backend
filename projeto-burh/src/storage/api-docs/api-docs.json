@@ -1,0 +1,682 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Candidaturas",
+        "description": "Documentacao da API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/api/candidaturas": {
+            "get": {
+                "tags": [
+                    "Candidaturas"
+                ],
+                "summary": "Pegar todas as candidaturas",
+                "operationId": "ffacd6da44200d069eb2a57a7ab5a205",
+                "responses": {
+                    "200": {
+                        "description": "Operacao bem-sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CandidaturaResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Candidaturas"
+                ],
+                "summary": "Criar uma nova candidatura",
+                "operationId": "8bfaef63a11fa4f109440a74dd3f956d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Candidatura"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Candidatura criada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CandidaturaResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/candidaturas/{id}": {
+            "get": {
+                "tags": [
+                    "Candidaturas"
+                ],
+                "summary": "Pegar uma candidatura pelo ID",
+                "operationId": "180605f7dfaa691010d47ceebe49a5ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacao bem-sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CandidaturaResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Candidatura nao encontrada"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Candidaturas"
+                ],
+                "summary": "Atualizar uma candidatura existente",
+                "operationId": "adc0ecf925e651954b15aaacdd65263c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Candidatura"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Candidatura atualizada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CandidaturaResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Candidatura nao encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Candidaturas"
+                ],
+                "summary": "Deletar uma candidatura",
+                "operationId": "0dc0d31c81258ce0fb3a44424c3d68a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Candidatura deletada"
+                    },
+                    "404": {
+                        "description": "Candidatura nao encontrada"
+                    }
+                }
+            }
+        },
+        "/api/empresas": {
+            "get": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Pegar todas as empresas",
+                "operationId": "e5d40f6ab397a2e07d02f50d3eb395f3",
+                "responses": {
+                    "200": {
+                        "description": "Operacao bem-sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EmpresaResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Criar uma nova empresa",
+                "operationId": "b400bda696995ef09cec01e24e345e39",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Empresa"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Empresa criada"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/empresas/{id}": {
+            "get": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Pegar uma empresa por ID",
+                "operationId": "01cf4a33a64fd815d116b70387a19e57",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operacao bem-sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EmpresaResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Empresa nao encontrada"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Atualizar uma empresa existente",
+                "operationId": "d6113af3348fcbc0ad3ca2ed8ce6e89e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Empresa"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Empresa atualizada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EmpresaResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Empresa nao encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Deletar uma empresa",
+                "operationId": "b8ac3362ec3de93acdd573849c335811",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empresa deletada"
+                    },
+                    "404": {
+                        "description": "Empresa nao encontrada"
+                    }
+                }
+            }
+        },
+        "/api/usuarios": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Pegar todos os usuarios",
+                "operationId": "e9d4d8b419dbef04b5748fbf9ccf3881",
+                "responses": {
+                    "200": {
+                        "description": "Operacao bem-sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Usuario"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CandidaturaResource": {
+                "title": "Candidatura",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "usuario_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "vaga_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "EmpresaResource": {
+                "title": "Empresa",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nome": {
+                        "type": "string",
+                        "example": "BURH"
+                    },
+                    "descricao": {
+                        "type": "string",
+                        "example": "Empresa de contratacao"
+                    },
+                    "cnpj": {
+                        "type": "string",
+                        "example": "12.345.678/0001-90"
+                    },
+                    "plano": {
+                        "type": "enum",
+                        "example": "P"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "UsuarioResource": {
+                "title": "Usuario",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nome": {
+                        "type": "string",
+                        "example": "Caique"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "caique@gmail.com"
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "example": "123.456.789-00"
+                    },
+                    "data_nascimento": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "1990-01-01"
+                    },
+                    "idade": {
+                        "type": "integer",
+                        "example": 34
+                    },
+                    "vagas_candidatas": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "titulo": {
+                                    "type": "string",
+                                    "example": "Desenvolvedor Backend"
+                                },
+                                "descricao": {
+                                    "type": "string",
+                                    "example": "Vaga para desenvolvedor backend com experiencia em Laravel"
+                                },
+                                "salario": {
+                                    "type": "number",
+                                    "format": "float",
+                                    "example": 5000
+                                },
+                                "tipo": {
+                                    "type": "string",
+                                    "example": "CLT"
+                                },
+                                "horario": {
+                                    "type": "integer",
+                                    "example": 8
+                                },
+                                "empresa_id": {
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "created_at": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2025-10-01T12:00:00Z"
+                                },
+                                "updated_at": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2025-10-01T12:00:00Z"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "VagaResource": {
+                "title": "Vaga",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "titulo": {
+                        "type": "string",
+                        "example": "Desenvolvedor Backend"
+                    },
+                    "descricao": {
+                        "type": "string",
+                        "example": "Vaga para desenvolvedor backend com experiencia em Laravel"
+                    },
+                    "tipo": {
+                        "type": "enum",
+                        "example": "CLT"
+                    },
+                    "salario": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5000
+                    },
+                    "horario": {
+                        "type": "integer",
+                        "example": 8
+                    },
+                    "empresa_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-10-01T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Candidatura": {
+                "title": "Candidatura",
+                "required": [
+                    "usuario_id",
+                    "vaga_id"
+                ],
+                "properties": {
+                    "usuario_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "vaga_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Empresa": {
+                "title": "Empresa",
+                "required": [
+                    "nome",
+                    "descricao",
+                    "cnpj",
+                    "plano"
+                ],
+                "properties": {
+                    "nome": {
+                        "type": "string",
+                        "example": "BURH"
+                    },
+                    "descricao": {
+                        "type": "string",
+                        "example": "Empresa de contratacao"
+                    },
+                    "cnpj": {
+                        "type": "string",
+                        "example": "12.345.678/0001-90"
+                    },
+                    "plano": {
+                        "type": "enum",
+                        "example": "P"
+                    }
+                },
+                "type": "object"
+            },
+            "Usuario": {
+                "title": "Usuario",
+                "required": [
+                    "nome",
+                    "email",
+                    "cpf",
+                    "data_nascimento"
+                ],
+                "properties": {
+                    "nome": {
+                        "type": "string",
+                        "example": "Caique Oliveira"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "caique@gmail.com"
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "example": "123.456.789-00"
+                    },
+                    "data_nascimento": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "1990-01-01"
+                    }
+                },
+                "type": "object"
+            },
+            "Vaga": {
+                "title": "Vaga",
+                "required": [
+                    "titulo",
+                    "descricao",
+                    "tipo",
+                    "salario",
+                    "horario",
+                    "empresa_id"
+                ],
+                "properties": {
+                    "titulo": {
+                        "type": "string",
+                        "example": "Desenvolvedor Backend"
+                    },
+                    "descricao": {
+                        "type": "string",
+                        "example": "Vaga para desenvolvedor backend com experiencia em Laravel"
+                    },
+                    "tipo": {
+                        "type": "enum",
+                        "example": "CLT"
+                    },
+                    "salario": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5000
+                    },
+                    "horario": {
+                        "type": "integer",
+                        "example": 8
+                    },
+                    "empresa_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Candidaturas",
+            "description": "Candidaturas"
+        },
+        {
+            "name": "Empresas",
+            "description": "Empresas"
+        },
+        {
+            "name": "Usuarios",
+            "description": "Usuarios"
+        }
+    ]
+}
